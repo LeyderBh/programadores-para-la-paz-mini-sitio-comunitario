@@ -19,28 +19,30 @@ async function cargarMensajes() {
 
     contenedorMensajes.innerHTML = ""
 
-    for (const mensaje of mensajes) {
+    mensajes.forEach((mensaje, indice) => {
       const tarjeta = document.createElement("article")
       tarjeta.classList.add("tarjeta-mensaje")
+      tarjeta.style.animationDelay = `${indice * 0.1}s`
 
       tarjeta.innerHTML = `
         <h3>${mensaje.titulo}</h3>
         <p>${mensaje.mensaje}</p>
 
-        <p>
+        <div class="tarjeta-etiquetas" aria-label="Metadatos del mensaje">
           <span class="etiqueta">Categoría: ${mensaje.categoria}</span>
           <span class="etiqueta">Audiencia: ${mensaje.audiencia}</span>
           <span class="etiqueta">Tono: ${mensaje.tono}</span>
-        </p>
+        </div>
 
         <p><strong>Llamado a la acción:</strong> ${mensaje.llamadoAccion}</p>
         <p class="texto-secundario"><strong>Fuente:</strong> ${mensaje.fuente}</p>
       `
 
       contenedorMensajes.appendChild(tarjeta)
-    }
+    })
   } catch (error) {
-    contenedorMensajes.textContent = "No fue posible cargar los mensajes. Revisa que el servidor esté funcionando."
+    contenedorMensajes.innerHTML =
+      '<p class="tablero-placeholder">No fue posible cargar los mensajes. Revisa que el servidor esté funcionando.</p>'
   }
 }
 
@@ -51,9 +53,10 @@ async function cargarCalendario() {
 
     contenedorCalendario.innerHTML = ""
 
-    for (const pieza of calendario) {
+    calendario.forEach((pieza, indice) => {
       const tarjeta = document.createElement("article")
       tarjeta.classList.add("tarjeta-mensaje")
+      tarjeta.style.animationDelay = `${indice * 0.1}s`
 
       tarjeta.innerHTML = `
         <h3>Semana ${pieza.semana} - ${pieza.dia}</h3>
@@ -67,8 +70,9 @@ async function cargarCalendario() {
       `
 
       contenedorCalendario.appendChild(tarjeta)
-    }
+    })
   } catch (error) {
-    contenedorCalendario.textContent = "No fue posible cargar el calendario editorial. Revisa que el servidor esté funcionando."
+    contenedorCalendario.innerHTML =
+      '<p class="tablero-placeholder">No fue posible cargar el calendario editorial. Revisa que el servidor esté funcionando.</p>'
   }
 }

@@ -1,3 +1,7 @@
+body {
+  background-color: #ffffff;
+}
+
 .decoraciones {
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-weight: 800;
@@ -31,7 +35,7 @@ h2.decoraciones {
   width: min(11rem, 55%);
   height: 0.28rem;
   border-radius: 999px;
-  background: linear-gradient(90deg, #f10707 0%, #d6da0d 50%, #197e0c 100%);
+  background: linear-gradient(90deg, #f10707 0%, #d6da0d 20%, #197e0c 35%, #fff 50%, #197e0c 65%, #d6da0d 80%, #f10707 100%);
   box-shadow: 0 0 1.25rem rgba(59, 130, 246, 0.35);
 }
 
@@ -41,21 +45,206 @@ h2.decoraciones::after {
   box-shadow: 0 0 0.85rem rgba(59, 130, 246, 0.28);
 }
 
-#btnMensajes {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
+.btn-cargar {
+  --btn-grad: linear-gradient(105deg, #f10707 0%, #d6da0d 50%, #197e0c 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  margin: 1.25rem auto 0.5rem;
+  padding: 0.9rem 1.85rem;
+  min-width: min(100%, 14rem);
+  width: fit-content;
+  max-width: 100%;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-  margin: 20px auto;
-  width: 50%;
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  transition: all 0.3s ease;
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  background: var(--btn-grad);
+  text-shadow: 0 1px 2px rgba(15, 23, 42, 0.25);
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.08),
+    0 10px 28px -6px rgba(241, 7, 7, 0.35),
+    0 10px 28px -6px rgba(25, 126, 12, 0.28);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
 }
 
+.btn-cargar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.5s ease;
+}
+
+.btn-cargar::after {
+  content: "→";
+  font-size: 1.15rem;
+  line-height: 1;
+  transition: transform 0.22s ease;
+}
+
+.btn-cargar:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.12),
+    0 18px 42px -8px rgba(241, 7, 7, 0.4),
+    0 18px 42px -8px rgba(25, 126, 12, 0.35);
+}
+
+.btn-cargar:hover::before {
+  transform: translateX(120%);
+}
+
+.btn-cargar:hover::after {
+  transform: translateX(4px);
+}
+
+.btn-cargar:active {
+  transform: translateY(-1px);
+  filter: brightness(0.98);
+  box-shadow:
+    0 2px 8px rgba(15, 23, 42, 0.1),
+    0 8px 20px -8px rgba(241, 7, 7, 0.25);
+}
+
+.btn-cargar:focus-visible {
+  outline: 3px solid #197e0c;
+  outline-offset: 3px;
+}
+
+@keyframes tarjeta-entra {
+  from {
+    opacity: 0;
+    transform: translateY(1.25rem) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tablero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.25rem;
+  margin: 1rem auto 0;
+  width: 100%;
+  max-width: 72rem;
+  padding: 0 0.5rem;
+}
+
+.tablero-placeholder {
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 0;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  color: #64748b;
+  text-align: center;
+}
+
+.tarjeta-mensaje {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  position: relative;
+  flex: 0 1 17.5rem;
+  width: min(100%, 17.5rem);
+  max-width: 17.5rem;
+  margin: 0;
+  padding: 1.25rem 1.35rem 1.25rem calc(1.35rem + 5px);
+  animation: tarjeta-entra 0.55s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 20px -6px rgba(15, 23, 42, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-mensaje::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f10707 0%, #d6da0d 45%, #197e0c 100%);
+}
+
+.tarjeta-mensaje:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 4px 8px rgba(15, 23, 42, 0.06),
+    0 18px 36px -12px rgba(15, 23, 42, 0.14);
+}
+
+.tarjeta-mensaje h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #0f172a;
+  line-height: 1.25;
+}
+
+.tarjeta-mensaje p {
+  margin: 0.45rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.tarjeta-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin: 0.85rem 0 0.65rem;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 0.28rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #166534;
+  background: rgba(25, 126, 12, 0.1);
+  border-radius: 999px;
+  border: 1px solid rgba(25, 126, 12, 0.18);
+}
+
+.texto-secundario {
+  margin-top: 0.85rem !important;
+  padding-top: 0.75rem;
+  font-size: 0.8125rem !important;
+  color: #64748b !important;
+  border-top: 1px solid rgba(15, 23, 42, 0.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tarjeta-mensaje {
+    animation: none;
+  }
+}
