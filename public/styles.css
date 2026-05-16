@@ -1,5 +1,80 @@
+:root {
+  --texto-principal: #334155;
+  --texto-suave: #64748b;
+  --texto-titulo: #0f172a;
+  --ancho-contenido: 42rem;
+}
+
 body {
+  margin: 0;
   background-color: #ffffff;
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  color: var(--texto-principal);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+header,
+main {
+  max-width: var(--ancho-contenido);
+  margin: 0 auto;
+  padding: 0 1.25rem 2.5rem;
+}
+
+header {
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+main section {
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+header p,
+main section > p {
+  margin: 0 auto 1rem;
+  max-width: 36rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--texto-suave);
+}
+
+header p {
+  margin-bottom: 0;
+  font-size: 1.0625rem;
+}
+
+main section > p strong,
+.tarjeta-mensaje p strong {
+  color: var(--texto-titulo);
+  font-weight: 700;
+}
+
+section.aviso-seguridad > p {
+  position: relative;
+  margin-top: 0.5rem;
+  padding: 1.15rem 1.35rem 1.15rem calc(1.35rem + 5px);
+  text-align: left;
+  color: var(--texto-principal);
+  background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.04),
+    0 8px 20px -6px rgba(15, 23, 42, 0.08);
+}
+
+section.aviso-seguridad > p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 12px;
+  bottom: 12px;
+  width: 4px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #f10707 0%, #d6da0d 45%, #197e0c 100%);
 }
 
 .decoraciones {
@@ -157,9 +232,10 @@ h2.decoraciones::after {
   width: 100%;
   margin: 0;
   padding: 0.75rem 0;
-  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   font-size: 0.9375rem;
-  color: #64748b;
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--texto-suave);
   text-align: center;
 }
 
@@ -211,8 +287,10 @@ h2.decoraciones::after {
 .tarjeta-mensaje p {
   margin: 0.45rem 0;
   font-size: 0.9375rem;
-  line-height: 1.55;
-  color: #334155;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: left;
+  color: var(--texto-principal);
 }
 
 .tarjeta-etiquetas {
@@ -239,7 +317,8 @@ h2.decoraciones::after {
   margin-top: 0.85rem !important;
   padding-top: 0.75rem;
   font-size: 0.8125rem !important;
-  color: #64748b !important;
+  font-weight: 500;
+  color: var(--texto-suave) !important;
   border-top: 1px solid rgba(15, 23, 42, 0.06);
 }
 
