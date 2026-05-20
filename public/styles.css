@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-:root {
+root {
   --texto-principal: #334155;
   --texto-suave: #64748b;
   --texto-titulo: #0f172a;
@@ -328,7 +327,7 @@ h2.decoraciones::after {
     animation: none;
   }
 }
-=======
+
 input {
     padding: 10px;
     border: 1px solid #999999;
@@ -342,4 +341,4 @@ input {
     font-weight: bold;
   }
   
->>>>>>> main
+
