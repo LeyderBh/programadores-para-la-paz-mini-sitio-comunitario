@@ -13,25 +13,48 @@
   <header>
     <h1 class="decoraciones">Mini-sitio comunitario</h1>
     <p>
-      Proyecto único de Semana 5 para difusión responsable, calendario editorial y tablero de mensajes.
+      Proyecto único de Semana 5 para difusión responsable, calendario editorial, documentación y transferencia tecnológica.
     </p>
   </header>
 
   <main>
     <section>
+<<<<<<< HEAD
       <h2 class="decoraciones">Proyecto vivo en GitHub</h2>
+=======
+      <h2>Documentación como transparencia</h2>
+>>>>>>> main
       <p>
-        La rama main será actualizada por los docentes. Cada estudiante trabajará en su rama personal.
+        Un proyecto comunitario debe poder entenderse, ejecutarse, probarse y transferirse a otras personas mediante documentación clara.
       </p>
+    </section>
+
+    <section>
+      <h2>Login pedagógico</h2>
       <p>
-        Desde esta clase practicamos cómo traer mejoras del proyecto base y mantener la trazabilidad.
+        Este login es solo una práctica para preparar el concepto de middleware de la Clase 25.
+        No uses credenciales reales.
       </p>
+
+      <label for="usuario">Usuario:</label>
+      <br>
+      <input id="usuario" type="text" value="docente">
+      <br><br>
+
+      <label for="clave">Clave:</label>
+      <br>
+      <input id="clave" type="password" value="demo">
+      <br><br>
+
+      <button id="btnLogin">Ingresar</button>
+
+      <p id="mensajeLogin">Aquí aparecerá la respuesta del login pedagógico.</p>
     </section>
 
     <section>
       <h2 class="decoraciones">Tablero de mensajes comunitarios</h2>
       <p>
-        Esta sección funciona como vitrina comunitaria. Debe mostrar información clara, legible y segura.
+        Esta sección funciona como vitrina comunitaria. Los mensajes se cargan desde la API propia.
       </p>
       <button type="button" id="btnMensajes" class="btn-cargar">Cargar mensajes</button>
       <div id="contenedorMensajes" class="tablero">
@@ -42,7 +65,7 @@
     <section>
       <h2 class="decoraciones">Calendario editorial</h2>
       <p>
-        El calendario editorial organiza publicaciones por fecha, tema, canal, público objetivo, responsable y fuente.
+        El calendario editorial se consulta desde el backend y permite organizar publicaciones responsables.
       </p>
       <button type="button" id="btnCalendario" class="btn-cargar">Cargar calendario</button>
       <div id="contenedorCalendario" class="tablero">
@@ -50,12 +73,20 @@
       </div>
     </section>
 
+<<<<<<< HEAD
     <section class="aviso-seguridad">
       <h2 class="decoraciones">Seguridad visual y minimización de datos</h2>
+=======
+    <section>
+      <h2>Resumen de la API propia</h2>
+>>>>>>> main
       <p>
-        La vista pública debe mostrar solo la información necesaria para orientar a la comunidad.
-        No debe exponer datos personales innecesarios.
+        Esta sección muestra un resumen generado por el backend a partir de los datos del proyecto.
       </p>
+      <button id="btnResumen">Cargar resumen</button>
+      <div id="contenedorResumen" class="tablero">
+        Aquí aparecerá el resumen del proyecto.
+      </div>
     </section>
   </main>
 

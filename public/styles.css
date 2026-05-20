@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --texto-principal: #334155;
   --texto-suave: #64748b;
@@ -327,3 +328,18 @@ h2.decoraciones::after {
     animation: none;
   }
 }
+=======
+input {
+    padding: 10px;
+    border: 1px solid #999999;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  #mensajeLogin {
+    margin-top: 12px;
+    font-weight: bold;
+  }
+  
+>>>>>>> main
