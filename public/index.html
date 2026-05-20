@@ -20,32 +20,53 @@
   <main>
     <section>
       <h2 class="decoraciones">Proyecto vivo en GitHub</h2>
-      <h2>Documentación como transparencia</h2
+      <h2>Documentación como transparencia</h2>
       <p>
         Un proyecto comunitario debe poder entenderse, ejecutarse, probarse y transferirse a otras personas mediante documentación clara.
       </p>
     </section>
 
-    <section>
-      <h2>Login pedagógico</h2>
+    <section class="seccion-login">
+      <h2 class="decoraciones">Login pedagógico</h2>
       <p>
         Este login es solo una práctica para preparar el concepto de middleware de la Clase 25.
         No uses credenciales reales.
       </p>
 
-      <label for="usuario">Usuario:</label>
-      <br>
-      <input id="usuario" type="text" value="docente">
-      <br><br>
+      <div class="formulario-login" role="form" aria-label="Login pedagógico">
+        <div class="formulario-campo">
+          <label for="usuario" class="formulario-etiqueta">Usuario</label>
+          <input
+            id="usuario"
+            class="formulario-input"
+            type="text"
+            value="docente"
+            autocomplete="username"
+          >
+        </div>
 
-      <label for="clave">Clave:</label>
-      <br>
-      <input id="clave" type="password" value="demo">
-      <br><br>
+        <div class="formulario-campo">
+          <label for="clave" class="formulario-etiqueta">Clave</label>
+          <input
+            id="clave"
+            class="formulario-input"
+            type="password"
+            value="demo"
+            autocomplete="current-password"
+          >
+        </div>
 
-      <button id="btnLogin">Ingresar</button>
+        <button type="button" id="btnLogin" class="btn-cargar btn-login">Ingresar</button>
+      </div>
 
-      <p id="mensajeLogin">Aquí aparecerá la respuesta del login pedagógico.</p>
+      <p
+        id="mensajeLogin"
+        class="login-mensaje login-mensaje--inicial"
+        role="status"
+        aria-live="polite"
+      >
+        Aquí aparecerá la respuesta del login pedagógico.
+      </p>
     </section>
 
     <section>
@@ -71,12 +92,18 @@
     </section>
     <section class="aviso-seguridad">
       <h2 class="decoraciones">Seguridad visual y minimización de datos</h2>
+      <p>
+        La vista pública debe mostrar solo la información necesaria para orientar a la comunidad.
+        No debe exponer datos personales innecesarios.
+      </p>
+    </section>
+
     <section>
-      <h2>Resumen de la API propia</h2>
+      <h2 class="decoraciones">Resumen de la API propia</h2>
       <p>
         Esta sección muestra un resumen generado por el backend a partir de los datos del proyecto.
       </p>
-      <button id="btnResumen">Cargar resumen</button>
+      <button type="button" id="btnResumen" class="btn-cargar">Cargar resumen</button>
       <div id="contenedorResumen" class="tablero">
         Aquí aparecerá el resumen del proyecto.
       </div>

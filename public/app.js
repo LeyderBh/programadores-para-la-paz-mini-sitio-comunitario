@@ -27,12 +27,37 @@ btnLogin.addEventListener("click", () => {
   hacerLogin()
 })
 
+usuario.addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") {
+    hacerLogin()
+  }
+})
+
+clave.addEventListener("keydown", (evento) => {
+  if (evento.key === "Enter") {
+    hacerLogin()
+  }
+})
+
+function mostrarMensajeLogin(texto, tipo) {
+  mensajeLogin.textContent = texto
+  mensajeLogin.className = "login-mensaje"
+
+  if (tipo) {
+    mensajeLogin.classList.add(`login-mensaje--${tipo}`)
+  } else {
+    mensajeLogin.classList.add("login-mensaje--inicial")
+  }
+}
+
 async function hacerLogin() {
   try {
     const datosLogin = {
-      usuario: usuario.value,
+      usuario: usuario.value.trim(),
       clave: clave.value
     }
+
+    mostrarMensajeLogin("Verificando credenciales de demostración...", "aviso")
 
     const respuesta = await fetch("/api/login", {
       method: "POST",
@@ -44,14 +69,22 @@ async function hacerLogin() {
 
     const datos = await respuesta.json()
 
-    mensajeLogin.textContent = datos.mensaje
-
     if (respuesta.ok) {
       localStorage.setItem("tokenDemo", datos.token)
       localStorage.setItem("rolDemo", datos.rol)
+      mostrarMensajeLogin(
+        `${datos.mensaje} Rol asignado: ${datos.rol}.`,
+        "exito"
+      )
+      return
     }
+
+    mostrarMensajeLogin(datos.mensaje, "error")
   } catch (error) {
-    mensajeLogin.textContent = "No fue posible realizar el login pedagógico. Revisa el servidor."
+    mostrarMensajeLogin(
+      "No fue posible realizar el login pedagógico. Revisa el servidor.",
+      "error"
+    )
   }
 }
 
